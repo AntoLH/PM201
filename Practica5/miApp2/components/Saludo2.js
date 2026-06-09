@@ -1,10 +1,10 @@
-import {Text, Image, Button} from 'react-native'
+import {Text, Image, Button, View} from 'react-native'
 
 export const Saludo2= () => { 
     return(
 
         <View>
-        <text>Hola RN: Componente Propio</text>
+        <Text>Hola RN: Componente Propio</Text>
         <Image source={require('../assets/wave.png')}/>
         <Button title='Hola 201'></Button>
         
