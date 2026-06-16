@@ -1,20 +1,20 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React,{useState} from "react";
 import { Button } from "react-native-web";
 
-export const Perfil = ({nombre, carrera, materia, cuatri}) => {
+export const Perfil = ({nombre, carrera, materia, cuatri, style}) => {
 
     const [mostrar, setMostrar]= useState(false)
 
     return(
-        <View>
-            <Text> {nombre} </Text>
+        <View style={[estilos.tarjeta,style]}>
+            <Text style={estilos.nombre}> {nombre} </Text>
 
             {mostrar && 
             <>
-            <Text> {carrera} </Text>
-            <Text> {materia} </Text>
-            <Text> {cuatri} </Text>
+            <Text style={estilos.carrera}> {carrera} </Text>
+            <Text style={estilos.otroTexto}> {materia} </Text>
+            <Text style={estilos.otroTexto}> {cuatri} </Text>
             </> }
 
             <Button title="Ver Perfil" onPress={ ()=>setMostrar(!mostrar) }/>
@@ -22,3 +22,26 @@ export const Perfil = ({nombre, carrera, materia, cuatri}) => {
         </View>
     )
 }
+
+const estilos= StyleSheet.create({
+    nombre:{
+        fontsize:24,
+        fontweight:600,
+        textTransform:'uppercase',
+    },
+    carrera:{
+        fontSize:18,
+        color:'yellow',
+        fontFamily:'Roboto',
+    },
+    otroTexto:{
+        fontSize:12,
+        fontFamily:'Courier',
+        fontStyle:'italic',
+    },
+    tarjeta:{
+        borderWidth: 2,
+        padding:25,
+        margin:20,
+    },
+});

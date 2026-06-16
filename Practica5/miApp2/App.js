@@ -11,8 +11,9 @@ import {Perfil} from './components/Perfil';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Perfil nombre="anto" carrera="ISC" materia="Movil" cuatri="9"/>
-      <Perfil nombre="eric" carrera="ISC" materia="Movil" cuatri="1"/>
+      <Perfil style={styles.tarjetaverde} nombre="anto" carrera="ISC" materia="Movil" cuatri="9"/>
+      <Perfil style={styles.tarjetaroja} nombre="eric" carrera="LAGE" materia="Movil" cuatri="1"/>
+      <Perfil style={styles.tarjetaverde} nombre="Anthx" carrera="MECA" materia="Movil" cuatri="8"/>
     </View>
   );
 }
@@ -20,8 +21,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#00ffd5',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    flexDirection:'column',
+  },
+  tarjetaverde:{
+    backgroundColor: '#6BCB77',
+  },
+  tarjetaroja:{
+    backgroundColor: '#FF6B6B',
   },
 });
