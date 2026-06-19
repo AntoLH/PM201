@@ -1,19 +1,18 @@
+
 /* Zona1: Importaciones de archivos y componentes */
 
 import { StatusBar } from 'expo-status-bar';
 /* import { Component } from 'react';*/
 import { StyleSheet, Text, View, Image } from 'react-native';
-import {Saludo} from './components/Saludo';
-import {Saludo2} from './components/Saludo2';
 import {Perfil} from '../components/Perfil';
 
 /* Zona 2: Main - componentes */
 export default function App() {
   return (
     <View style={styles.container}>
-      <Perfil style={styles.tarjetaverde} nombre="anto" carrera="ISC" materia="Movil" cuatri="9"/>
-      <Perfil style={styles.tarjetaroja} nombre="eric" carrera="LAGE" materia="Movil" cuatri="1"/>
-      <Perfil style={styles.tarjetaverde} nombre="Anthx" carrera="MECA" materia="Movil" cuatri="8"/>
+      <Perfil styles={styles.tarjetaVerde}nombre="Erick" carrera="ISC" materia="Movil" cuatri="9"/>
+      <Perfil styles={styles.tarjetaRoja}nombre="Toño" carrera="ISC" materia="Movil" cuatri="1"/>
+      <Perfil styles={styles.tarjetaVerde}nombre="Erick" carrera="ISC" materia="Movil" cuatri="9"/>
     </View>
   );
 }
@@ -21,16 +20,11 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#00ffd5',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    flexDirection:'row',
+    flexDirection: 'row',
   },
-  tarjetaverde:{
-    backgroundColor: '#6BCB77',
-  },
-  tarjetaroja:{
-    backgroundColor: '#FF6B6B',
-  },
+  tarjetaVerde:{backgroundColor: '#6BCB77',},
+  tarjetaRoja:{backgroundColor: '#FF6B6B',},
 });
-
