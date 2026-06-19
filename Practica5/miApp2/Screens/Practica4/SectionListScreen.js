@@ -11,18 +11,18 @@ export default function SectionList(){
                     nombre: 'Erick'
                 },
                 {
-                    nombre: 'Javi'
+                    nombre:  'Javier'
                 }
             ]
         },
         {
-            title: 'Tecnologias de la Informacion',
+            title: 'Tecnologias de la informacion',
             data: [
                 {
                     nombre: 'Ana'
                 },
                 {
-                    nombre: 'Pedro'
+                    nombre:  'Pedro'
                 }
             ]
         }
@@ -30,29 +30,28 @@ export default function SectionList(){
 
     return(
         <View style = { styles.container }>
-            <Text style={styles.titulo}> 
-                Estudiantes por carrera 
+            <Text style={styles.titulo}>
+                Estudiantes por carrera
             </Text>
-        
 
-        <SectionList
-            Sections={datos}
+        <SectionList 
+            sections={datos}
             renderSectionHeader={({ section }) => (
                 <Text style={styles.header}>
                     {SectionList}
                 </Text>
             )}
-            renderItem={({ item }) => (
-                <Text style={styles.item}> 
+            renderItem={({ item })=> (
+                <text style={styles.item}>
                     {item.nombre}
-                </Text>
+                </text>
             )}
-            />
+        />
         </View>
     )
 
     const styles = StyleSheet.create({
-        container: {
+        container:{
             flex: 1,
             padding: 20
         },
