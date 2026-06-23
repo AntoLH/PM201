@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Estudiante } from '../../components/Estudiante';
 import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
 
 export default function FlatListenScreen(){
@@ -24,12 +24,14 @@ export default function FlatListenScreen(){
             <Text style={StyleSheet.container}> Lista de estudiantes </Text>
             <FlatList 
             data = {estudiantes} 
-            renderItem={({item})=>(
-                <View style={StyleSheet.card}>
-                    <Text>Nombre:{item.nombre}</Text>
-                    <Text>Carrerae:{item.carrera}</Text>
-                </View>
-            )}
+            renderItem={({ item }) => (
+
+                <Estudiante
+                    nombre={item.nombre}
+                    carrera={item.carrera}
+                />
+
+)}
         />
         </View>
     )
