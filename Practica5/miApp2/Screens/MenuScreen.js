@@ -1,25 +1,26 @@
-
-/* Zona1: Importaciones de archivos y componentes */
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import React, { useState } from 'react';
 import TarjetasScreen from './TarjetasScreen';
 import Componente1 from './Componente1';
-import FlatList from './Practica4/FlatListScreen';
+import FlatListScreen from './Practica4/FlatListScreen';
 import SectionListScreen from './Practica4/SectionListScreen';
+import Practicagena from './Practicagena';
 
-/* Zona 2: Main - componentes */
 export default function App() {
     const [screen,setScreen]=useState('menu');
+    
     switch(screen){
         case 'tarjetas':
             return <TarjetasScreen/>
-        case 'Componente 1':
+        case 'Componente1':
             return <Componente1/>
         case 'flatlist':
             return <FlatListScreen/>
         case 'SectionList':
             return <SectionListScreen/>
+        case 'practicagena':
+            return <Practicagena/>
         case 'menu':
             default:
         return (
@@ -29,12 +30,12 @@ export default function App() {
                 <Button title= "Practica Componente1" onPress={()=>setScreen('Componente1')}/>
                 <Button title= "Practica FlatList" onPress={()=>setScreen('flatlist')}/>
                 <Button title= "Practica SectionList" onPress={()=>setScreen('SectionList')}/>
+                <Button title= "Practica Gena" onPress={()=>setScreen('practicagena')}/>
             </View>
-        );//return
-    }//switch
-}//funcion
+        );
+    }
+}
 
-/* Zona 3: Estilos y posicionamiento */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
