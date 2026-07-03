@@ -5,8 +5,7 @@ import {Perfil} from '../components/Perfil';
 import { StatusBar } from 'expo-status-bar';
 
 const fondo_1 = require('../assets/marmol.jpg');
-const fondo_2 = require('../assets/pintura.jpeg');
-
+const fondo_2 = require('../assets/pintura.jpg');
 export const ImagenFondo = () => {
     const [fondo, setFondo] = useState(false);
 

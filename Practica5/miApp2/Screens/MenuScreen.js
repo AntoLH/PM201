@@ -1,101 +1,124 @@
-/* Zona 1: Improtaciones de archivos y componentes */
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button, StyleSheet, ScrollView } from 'react-native';
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
-import React,{Component, useEffect, useState} from 'react';
-import TarjetasScreen from '../Screens/TarjetasScreen';
-import PressableScreen from './PressableScreen';
-import {ImagenFondo} from './ImagenFondo';
+// IMPORTACIONES CON LLAVES (Tus archivos con exportación nombrada)
 import { SplashScreen } from './SplashScreen';
-import {Componente1} from './Componente1';
 import { Home } from './Home';
+import { ImagenFondo } from './ImagenFondo';
+
+// IMPORTACIONES SIN LLAVES (Tus archivos con exportación por defecto)
+import Componente1 from './Componente1';
+import Componente4_0 from './Componente4_0';
+import ComponenteAlert from './Componentealerta';
+import Practicagena from './Practicagena';
+import PressableScreen from './PressableScreen';
 import SwitchScreen from './SwitchScreen';
-import { Componente4_0 } from './Componente4_0';
-import {Alerta} from './Alerta'
-import { FlatListScreen } from './FlatListScreen';
-import { SectionListScreen } from './SectionListScreen';
+import TarjetasScreen from './TarjetasScreen';
 
-/* Zona 2: Main - Componentes del Screen */
 export default function MenuScreen() {
-    const [screen, setScreen] = useState('menu');
+  const [screen, setScreen] = useState('Splash');
 
-    useEffect(() => {
-        if (screen === 'splashScreen') {
-            const timer = setTimeout(() => {
-                setScreen('home');
-            }, 6000);
-            return () => clearTimeout(timer);
-        }
-    }, [screen]);
+  // Temporizador de 3 segundos para el SplashScreen
+  useEffect(() => {
+    if (screen === 'Splash') {
+      const timer = setTimeout(() => {
+        setScreen('Menu'); 
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [screen]);
 
+  // Enrutador de las pantallas
+  const renderScreen = () => {
     switch (screen) {
-        case 'tarjetas': 
-            return <TarjetasScreen/>;
-        case 'componente1':
-            return <Componente1/>;
-        case 'pressableScreen': 
-            return <PressableScreen/>;
-        case 'switch':
-            return <SwitchScreen/>;
-        case 'input':
-            return <Componente4_0/>
-        case 'alert':
-            return <Alerta/>
-        case 'flatList':
-            return <FlatListScreen/>
-        case 'sectionList':
-            return <SectionListScreen/>
-        case 'imagenFondo':
-            return <ImagenFondo style={styles.container}/>;
-        case 'home':
-            return <Home/>;
-        case 'splashScreen':
-            return <SplashScreen/>;
-        case 'menu':
-            default:
-                return (
-                    <View style={styles.container}>
-                        <Text>Menú de prácticas</Text>
-                        <Button title='Práctica Tarjetas' onPress={ () => setScreen('tarjetas') }/>
+      case 'Splash': return <SplashScreen />;
+      case 'Home': return <Home />;
+      case 'ImagenFondo': return <ImagenFondo />;
+      case 'Componente1': return <Componente1 />;
+      case 'Componente4_0': return <Componente4_0 />;
+      case 'Alerta': return <ComponenteAlert />;
+      case 'Practicagena': return <Practicagena />;
+      case 'Pressable': return <PressableScreen />;
+      case 'Switch': return <SwitchScreen />;
+      case 'Tarjetas': return <TarjetasScreen />;
+      case 'Menu':
+      default:
+        return (
+          <ScrollView contentContainerStyle={styles.menuContainer}>
+            <Text style={styles.titulo}>Menú de prácticas</Text>
+            
+            <View style={styles.botonWrapper}>
+              <Button title="HOME" onPress={() => setScreen('Home')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="IMAGEN DE FONDO" onPress={() => setScreen('ImagenFondo')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA TARJETAS" onPress={() => setScreen('Tarjetas')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA COMPONENTE 1" onPress={() => setScreen('Componente1')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA GENA" onPress={() => setScreen('Practicagena')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA PRESSABLE" onPress={() => setScreen('Pressable')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA SWITCH" onPress={() => setScreen('Switch')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA TEXTINPUTS" onPress={() => setScreen('Componente4_0')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA ALERTAS" onPress={() => setScreen('Alerta')} />
+            </View>
+          </ScrollView>
+        );
+    }
+  };
 
-                        <Button title="Componente 1" onPress={() => setScreen('componente1')}/>
+  return (
+    <View style={styles.container}>
+      {/* Botón universal para regresar al menú */}
+      {screen !== 'Splash' && screen !== 'Menu' && (
+        <View style={styles.backButtonContainer}>
+          <Button title="← Volver al Menú" color="#8a8a8a" onPress={() => setScreen('Menu')} />
+        </View>
+      )}
+      
+      {/* Carga la pantalla seleccionada */}
+      {renderScreen()}
+    </View>
+  );
+}
 
-                        <Button title='PressableScreen' onPress={() => setScreen('pressableScreen') }/>
-
-                        <Button title='Switch' onPress={() => setScreen('switch')}/>
-
-                        <Button title='Input' onPress={() => setScreen('input')}/>
-
-                        <Button title='Alerta' onPress={() => setScreen('alert')}/>
-
-                        <Button title='Imagen Bg' onPress={() => setScreen('imagenFondo')}/>
-
-                        <Button title='Splash' onPress={() => setScreen('splashScreen')}/>
-                        
-                        <Button title='Flat List' onPress={() => setScreen('flatList')}/>
-
-                        <Button title='Section List' onPress={() => setScreen('sectionList')}/>
-                    </View>
-                );//Return
-    }//Switch
-}//Función
-
-/* Zona 3: Estilos y posicionamiento */
-
+// Estilos
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#570d0d',
+    backgroundColor: '#4a0e0e', // Fondo rojo UPQ
+  },
+  menuContainer: {
+    padding: 20,
     alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    gap: 15,
-    padding: 20
+    paddingBottom: 50,
   },
   titulo: {
-    color: 'white',
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
-    marginBottom: 20
+    marginBottom: 30,
+    marginTop: 40,
+    color: '#ffffff', // Texto blanco
+  },
+  botonWrapper: {
+    marginVertical: 8,
+  },
+  backButtonContainer: {
+    marginTop: 40,
+    marginLeft: 15,
+    marginBottom: 10,
+    alignItems: 'flex-start',
   }
 });

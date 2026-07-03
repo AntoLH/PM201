@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, TextInput, StyleSheet } from 'react-native';
 
-export const Componente4_0 = () => {  
-
+export default function Componente4_0() {
   const [texto, setTexto] = useState('');
   const [numero, setNumero] = useState('');
   const [correo, setCorreo] = useState('');
