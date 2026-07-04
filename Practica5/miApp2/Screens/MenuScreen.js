@@ -14,6 +14,8 @@ import Practicagena from './Practicagena';
 import PressableScreen from './PressableScreen';
 import SwitchScreen from './SwitchScreen';
 import TarjetasScreen from './TarjetasScreen';
+import ComponentesNativosScreen from './ComponentesNativosScreen';
+
 
 export default function MenuScreen() {
   const [screen, setScreen] = useState('Splash');
@@ -41,6 +43,7 @@ export default function MenuScreen() {
       case 'Pressable': return <PressableScreen />;
       case 'Switch': return <SwitchScreen />;
       case 'Tarjetas': return <TarjetasScreen />;
+      case 'ComponentesNativos': return <ComponentesNativosScreen />;
       case 'Menu':
       default:
         return (
@@ -73,6 +76,9 @@ export default function MenuScreen() {
             </View>
             <View style={styles.botonWrapper}>
               <Button title="PRACTICA ALERTAS" onPress={() => setScreen('Alerta')} />
+            </View>
+            <View style={styles.botonWrapper}>
+              <Button title="PRACTICA COMPONENTES NATIVOS" onPress={() => setScreen('ComponentesNativos')} />
             </View>
           </ScrollView>
         );
