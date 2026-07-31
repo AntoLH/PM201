@@ -8,13 +8,13 @@ export default function App() {
 
   const mostrarMensaje= (titulo, mensaje) => {
     if(Platform.OS == 'web'){
-      windows.alert(`${titulo}\n\n${mensaje}`);
+      window.alert(`${titulo}\n\n${mensaje}`);
     }else{
       Alert.alert(titulo,mensaje)
     }
   };
 
-  const guardarUsuario = async()=>{
+const guardarUsuario = async()=>{
 
     if(nombre.trim() === '' || edad.trim() === '' ){
       mostrarMensaje("Vacios", "Llena nombre y edad para continuar");
@@ -27,8 +27,13 @@ export default function App() {
       const respuesta = await fetch('http://localhost:5000/v1/usuarios/', 
       {
         method:"POST",
-        headers: {"Content-Type": "application-json"},
-        body: JSON.stringify({nombre: nombre, edad:edad}),
+        // 1. Corregimos el guion por una diagonal aquí abajo
+        headers: {"Content-Type": "application/json"},
+        // 2. Convertimos la edad a número entero con parseInt
+        body: JSON.stringify({
+          nombre: nombre, 
+          edad: parseInt(edad, 10) 
+        }),
       }
     );
 
