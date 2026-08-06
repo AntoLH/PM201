@@ -1,17 +1,14 @@
 import { SafeAreaView, View, Text, FlatList, StyleSheet, Pressable } from 'react-native';
-import React, { useState, useEffect } from 'react';
-// 1. Importamos el router de expo
-import { useRouter } from 'expo-router';
+import React, { useState, useCallback } from 'react';
+import { useRouter, useFocusEffect } from 'expo-router';
 
 export default function ConsultaUsuariosScreen() {
   const [usuarios, setUsuarios] = useState([]); 
-  
-  // 2. Inicializamos el router
   const router = useRouter(); 
 
   const obtenerUsuarios = async() => {
     try {
-      const respuesta = await fetch('http://localhost:5000/v1/usuarios/');
+      const respuesta = await fetch('http://10.181.42.137:5000/v1/usuarios/');
       const datos = await respuesta.json();
       setUsuarios(datos.usuarios);
     } catch(error) {
@@ -19,7 +16,11 @@ export default function ConsultaUsuariosScreen() {
     }
   };
 
-  useEffect(() => { obtenerUsuarios(); }, []);
+  useFocusEffect(
+    useCallback(() => {
+      obtenerUsuarios();
+    }, [])
+  );
 
   const renderTarjeta = ({ item }) => (
     <View style={styles.card}>
@@ -27,7 +28,6 @@ export default function ConsultaUsuariosScreen() {
       <View style={styles.linea}></View>
       <Text style={styles.info}>Edad: {item.edad} años</Text>
 
-      {/* 3. Usamos router.push y pasamos los datos del usuario en los 'params' */}
       <Pressable 
         style={styles.botonDetalles} 
         onPress={() => router.push({

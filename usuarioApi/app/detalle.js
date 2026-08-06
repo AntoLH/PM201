@@ -10,7 +10,7 @@ export default function DetalleUsuarioScreen() {
   const eliminarUsuario = async () => {
     try {
       // CORRECCIÓN: Quitamos la diagonal al final de la URL
-      const respuesta = await fetch(`http://localhost:5000/v1/usuarios/${params.id}`, {
+      const respuesta = await fetch(`http://10.181.42.137:5000/v1/usuarios/${params.id}`, {
       method: 'DELETE',
       headers: {
         // Aquí mandamos la credencial de admin:1234 en Base64

@@ -9,7 +9,7 @@ export default function DetalleUsuarioScreen({ route, navigation }) {
   // Función para hacer el DELETE a FastAPI
   const eliminarUsuario = async () => {
     try {
-      const respuesta = await fetch(`http://localhost:5000/v1/usuarios/${usuario.id}`, {
+      const respuesta = await fetch(`http://10.181.42.137:5000/v1/usuarios/${usuario.id}`, {
         method: 'DELETE',
       });
       

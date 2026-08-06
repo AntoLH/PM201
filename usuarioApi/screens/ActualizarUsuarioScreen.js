@@ -10,7 +10,7 @@ export default function ActualizarUsuarioScreen({ route, navigation }) {
 
   const guardarCambios = async () => {
     try {
-      const respuesta = await fetch(`http://localhost:5000/v1/usuarios/${usuario.id}`, {
+      const respuesta = await fetch(`http://10.181.42.137:5000/v1/usuarios/${usuario.id}`, {
         method: 'PUT', // O PATCH, dependiendo de tu backend en FastAPI
         headers: {
           'Content-Type': 'application/json',
