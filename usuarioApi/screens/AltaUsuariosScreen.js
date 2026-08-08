@@ -24,7 +24,7 @@ const guardarUsuario = async()=>{
     try{
 
       setCargando(true);
-      const respuesta = await fetch('http://10.181.42.137:5000/v1/usuarios/', 
+      const respuesta = await fetch('http://10.193.236.137:5000/v1/usuarios/', 
       {
         method:"POST",
         // 1. Corregimos el guion por una diagonal aquí abajo
